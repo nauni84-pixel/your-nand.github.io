@@ -1,0 +1,181 @@
+html<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>My Picture Notebook</title>
+
+    <style>
+
+  /* The whole page background */
+  body {
+    background-color: #ffecd2;
+    font-family: Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+
+  /* The big title */
+  h1 {
+    color: #5c3317;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* The notebook box */
+  .notebook {
+    background-color: #fffdf5;
+    width: 380px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    padding: 24px;
+    border: 2px solid #d4b896;
+  }
+
+  /* Hide ALL pages by default */
+  .page {
+    display: none;
+    text-align: center;
+  }
+
+  /* Show only the active page */
+  .page.active {
+    display: block;
+  }
+
+  /* Make the pictures look nice */
+  .page img {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid #e0c9a6;
+  }
+
+  /* The caption text under the picture */
+  .page p {
+    color: #5c3317;
+    font-size: 1.1rem;
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* The buttons */
+  button {
+    background-color: #5c3317;
+    color: white;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 16px 8px 0 8px;
+  }
+
+  /* Buttons change color when you hover over them */
+  button:hover {
+    background-color: #7a4a20;
+  }
+
+  /* Grey out the button when it's disabled */
+  button:disabled {
+    background-color: #c8b09a;
+    cursor: default;
+  }
+</style>
+
+  </head>
+
+  <body>
+
+    <h1>My Picture Notebook 📖</h1>
+
+    <!-- Each picture is wrapped in its own "page" box -->
+
+    <div class="page active">
+  <img src="pic1.png" alt="My picture 1">
+  <p>My first picture! 😊</p>
+</div>
+
+<div class="page">
+  <img src="pic2.png" alt="My picture 2">
+  <p>My second picture! 🌟</p>
+</div>
+
+<div class="page">
+  <img src="pic3.png" alt="My picture 3">
+  <p>My third picture! 🎉</p>
+</div>
+
+<div class="page">
+  <img src="pic4.png" alt="My picture 4">
+  <p>My fourth picture! 🌟</p>
+</div>
+
+<div class="page">
+  <img src="pic5.png" alt="My picture 5">
+  <p>My fifth picture! 🎉</p>
+</div>
+
+<div class="page">
+  <img src="pic6.png" alt="My picture 6">
+  <p>My sixth picture! 🎉</p>
+</div>
+
+<div class="page">
+  <img src="pic7.png" alt="My picture 7">
+  <p>My seventh picture! 🎉</p>
+</div>
+
+<div class="page">
+  <img src="pic8.png" alt="My picture 8">
+  <p>My eighth picture! 🎉</p>
+</div>
+
+<div class="page">
+  <img src="pic9.png" alt="My picture 9">
+  <p>My ninth picture! 🎉</p>
+</div>
+
+    <!-- The Next and Back buttons -->
+    <div style="margin-top: 40px;">
+<button id="backBtn" onclick="changePage(-1)" disabled>⬅️ Back</button>
+<button id="nextBtn" onclick="changePage(1)">Next ➡️</button>
+    </div>
+
+    <script>
+
+  let current = 0; // Start on the first page
+
+  function changePage(direction) {
+    const pages = document.querySelectorAll('.page');
+
+    // Hide the current page
+    pages[current].classList.remove('active');
+
+    // Move forward or backward
+    current = current + direction;
+
+    // Show the new page
+    pages[current].classList.add('active');
+
+    // Check if we are on the FIRST page
+    if (current === 0) {
+      document.getElementById('backBtn').disabled = true;
+    } else {
+      document.getElementById('backBtn').disabled = false;
+    }
+
+    // Check if we are on the LAST page
+    if (current === pages.length - 1) {
+      document.getElementById('nextBtn').disabled = true;
+    } else {
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+  }
+
+</script>
+
+  </body>
+
+</html>
